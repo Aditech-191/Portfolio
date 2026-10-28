@@ -1,131 +1,107 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { skillsCategories } from '../data/skillsData';
 import {
   User,
-  MapPin,
-  Cpu,
-  Code2,
-  ShieldCheck,
-  Database,
   Quote,
-  Activity,
-  Award,
-  Terminal,
-  Server
+  Target,
+  Sparkles,
+  Heart,
+  Compass,
+  Code2,
+  GraduationCap
 } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   const { t } = useLanguage();
-  const [activeCategoryKey, setActiveCategoryKey] = useState<string>('systems');
-
-  const iconMap: Record<string, React.ElementType> = {
-    Cpu,
-    Code2,
-    ShieldCheck,
-    Database,
-  };
-
-  const activeCategory = skillsCategories.find((c) => c.key === activeCategoryKey) || skillsCategories[0];
 
   return (
-    <section id="about" className="py-20 lg:py-28 relative scroll-mt-20">
-      {/* Background radial gradient */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-r from-primary-600/10 via-cyan-500/10 to-transparent blur-3xl pointer-events-none -z-10 rounded-full" />
-
+    <section id="about" className="py-20 lg:py-24 bg-white scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary-500/10 border border-primary-500/30 text-primary-400 text-xs font-mono uppercase tracking-widest">
-            <User className="w-3.5 h-3.5 text-cyan-400" />
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
+          <div className="badge-subtle">
+            <User className="w-3.5 h-3.5" />
             <span>{t.about.tag}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-text tracking-tight">
             {t.about.title}
           </h2>
         </div>
 
-        {/* Bio & Philosophy Block */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
+        {/* Narrative Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-16">
           
-          {/* Left Bio Card */}
-          <div className="lg:col-span-7 space-y-5 text-slate-300 leading-relaxed text-sm sm:text-base font-light">
-            <p>{t.about.p1}</p>
-            <p>{t.about.p2}</p>
+          {/* Left Narrative Card */}
+          <div className="lg:col-span-7 space-y-5 text-brand-muted leading-relaxed text-sm sm:text-base font-normal">
+            <p className="text-brand-text font-medium leading-relaxed">
+              {t.about.p1}
+            </p>
+            <p>
+              {t.about.p2}
+            </p>
 
-            {/* Core Philosophy Banner */}
-            <div className="p-5 rounded-2xl glass-panel-glow border-l-4 border-l-cyan-400 my-6">
-              <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-wider mb-2 font-bold">
+            {/* Philosophy Callout */}
+            <div className="p-6 rounded-2xl bg-blue-50/70 border-l-4 border-l-brand-blue border border-blue-200/60 my-6 space-y-2">
+              <div className="flex items-center gap-2 text-brand-blue font-mono text-xs uppercase tracking-wider font-bold">
                 <Quote className="w-4 h-4" />
-                <span>{t.about.corePhilosophy}</span>
+                <span>Guiding Mindset</span>
               </div>
-              <p className="text-white font-medium text-base sm:text-lg italic">
-                "{t.hero.tagline}"
+              <p className="text-brand-text font-semibold text-base sm:text-lg italic">
+                "{t.about.philosophyQuote}"
               </p>
             </div>
 
-            <p>{t.about.p3}</p>
+            <p>
+              {t.about.p3}
+            </p>
           </div>
 
-          {/* Right Highlights & Workstation Status */}
-          <div className="lg:col-span-5 space-y-4">
+          {/* Right Highlights: Brand vs Student Profile */}
+          <div className="lg:col-span-5 space-y-5">
             
-            <div className="rounded-3xl glass-card p-6 border-slate-800 space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-slate-400 uppercase">Operational Hub</span>
-                <span className="text-xs font-mono text-cyan-400 flex items-center gap-1">
-                  <MapPin className="w-3 h-3" />
+            {/* Identity Distinction Card */}
+            <div className="card-surface p-6 border-brand-border space-y-4 shadow-card">
+              <div className="flex items-center justify-between pb-3 border-b border-brand-border">
+                <span className="text-xs font-mono uppercase tracking-wider text-brand-blue font-bold">
+                  Identity & Structure
+                </span>
+                <span className="text-xs font-mono text-brand-muted">
                   Kampala, Uganda
                 </span>
               </div>
 
-              <div className="space-y-3 pt-2">
-                <div className="flex items-center justify-between p-3 rounded-xl bg-dark-950/70 border border-slate-800 text-xs">
-                  <div className="flex items-center gap-2.5">
-                    <Server className="w-4 h-4 text-primary-400" />
-                    <span className="text-slate-300">Bare-Metal Workstation Lab</span>
+              <div className="space-y-3">
+                <div className="p-3.5 rounded-xl bg-brand-secondary border border-brand-border space-y-1">
+                  <div className="flex items-center gap-2 text-xs font-bold text-brand-text">
+                    <GraduationCap className="w-4 h-4 text-brand-blue" />
+                    <span>Student Profile</span>
                   </div>
-                  <span className="text-emerald-400 font-mono">Active</span>
+                  <p className="text-xs text-brand-muted leading-relaxed">
+                    Jjuuko Adinan — Software Engineering student focusing on core computer science foundations, algorithms, and web systems.
+                  </p>
                 </div>
 
-                <div className="flex items-center justify-between p-3 rounded-xl bg-dark-950/70 border border-slate-800 text-xs">
-                  <div className="flex items-center gap-2.5">
-                    <ShieldCheck className="w-4 h-4 text-cyan-400" />
-                    <span className="text-slate-300">pfSense & WireGuard Mesh</span>
+                <div className="p-3.5 rounded-xl bg-brand-secondary border border-brand-border space-y-1">
+                  <div className="flex items-center gap-2 text-xs font-bold text-brand-text">
+                    <Code2 className="w-4 h-4 text-brand-blue" />
+                    <span>Brand Entity</span>
                   </div>
-                  <span className="text-emerald-400 font-mono">Hardened</span>
+                  <p className="text-xs text-brand-muted leading-relaxed">
+                    Adi Tech Software Solutions — The banner under which I design, build, and publish my software projects and digital solutions.
+                  </p>
                 </div>
 
-                <div className="flex items-center justify-between p-3 rounded-xl bg-dark-950/70 border border-slate-800 text-xs">
-                  <div className="flex items-center gap-2.5">
-                    <Database className="w-4 h-4 text-indigo-400" />
-                    <span className="text-slate-300">ODK / KoboToolbox Host</span>
+                <div className="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-200 space-y-1">
+                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-900">
+                    <Target className="w-4 h-4 text-emerald-600" />
+                    <span>Primary Objective</span>
                   </div>
-                  <span className="text-emerald-400 font-mono">Synced</span>
+                  <p className="text-xs text-emerald-800 leading-relaxed">
+                    Attracting software engineering internships, entry-level opportunities, mentorship, and open-source collaborations.
+                  </p>
                 </div>
-
-                <div className="flex items-center justify-between p-3 rounded-xl bg-dark-950/70 border border-slate-800 text-xs">
-                  <div className="flex items-center gap-2.5">
-                    <Award className="w-4 h-4 text-amber-400" />
-                    <span className="text-slate-300">Technical Uptime SLA</span>
-                  </div>
-                  <span className="text-amber-300 font-mono font-bold">100% Target</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Shell Insight Card */}
-            <div className="p-4 rounded-2xl bg-dark-950/90 border border-slate-800 text-xs font-mono text-slate-400 space-y-1">
-              <div className="flex items-center gap-1.5 text-slate-300">
-                <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-                <span>adinan@aditech:~$ git log --oneline -n 3</span>
-              </div>
-              <div className="pl-4 text-[11px] text-slate-500 space-y-0.5">
-                <p>9f8d12a feat(systems): optimize Linux kernel sysctl parameters</p>
-                <p>4b7c89e chore(odk): automate PostgreSQL pipeline encryption</p>
-                <p>1a2c34f feat(ui): finalize multilingual i18n & AI concierge</p>
               </div>
             </div>
 
@@ -133,74 +109,43 @@ export const AboutSection: React.FC = () => {
 
         </div>
 
-        {/* Technical Arsenal Interactive Explorer */}
-        <div className="space-y-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white">
-                {t.about.skillsHeadline}
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-400 font-light">
-                Click across disciplines to explore measured technical proficiencies.
+        {/* Core Values 3-Column Grid */}
+        <div className="space-y-6">
+          <h3 className="text-lg sm:text-xl font-bold text-brand-text flex items-center gap-2">
+            <Compass className="w-5 h-5 text-brand-blue" />
+            <span>{t.about.coreValuesTitle}</span>
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="card-surface p-6 border-brand-border space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-brand-blue mb-3">
+                <Target className="w-5 h-5" />
+              </div>
+              <h4 className="text-base font-bold text-brand-text">{t.about.val1Title}</h4>
+              <p className="text-xs sm:text-sm text-brand-muted leading-relaxed">
+                {t.about.val1Desc}
               </p>
             </div>
 
-            {/* Discipline Selectors */}
-            <div className="flex flex-wrap gap-2">
-              {skillsCategories.map((cat) => {
-                const Icon = iconMap[cat.icon] || Cpu;
-                const isSelected = activeCategoryKey === cat.key;
-                return (
-                  <button
-                    key={cat.key}
-                    onClick={() => setActiveCategoryKey(cat.key)}
-                    className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
-                      isSelected
-                        ? 'bg-gradient-to-r from-primary-600 to-cyan-600 text-white shadow-glow-primary'
-                        : 'glass-button text-slate-300 hover:text-white'
-                    }`}
-                  >
-                    <Icon className="w-3.5 h-3.5" />
-                    <span>{cat.title.split(' ')[0]}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Active Category Skills Panel */}
-          <div className="p-6 sm:p-8 rounded-3xl glass-card border border-slate-800 space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h4 className="text-lg font-bold text-white flex items-center gap-2">
-                  <Activity className="w-4 h-4 text-cyan-400" />
-                  {activeCategory.title}
-                </h4>
-                <p className="text-xs sm:text-sm text-slate-400 mt-1">
-                  {activeCategory.description}
-                </p>
+            <div className="card-surface p-6 border-brand-border space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-brand-blue mb-3">
+                <Heart className="w-5 h-5" />
               </div>
+              <h4 className="text-base font-bold text-brand-text">{t.about.val2Title}</h4>
+              <p className="text-xs sm:text-sm text-brand-muted leading-relaxed">
+                {t.about.val2Desc}
+              </p>
             </div>
 
-            {/* Proficiency Bars */}
-            <div className="space-y-4">
-              {activeCategory.skills.map((skill, idx) => (
-                <div key={idx} className="space-y-1.5">
-                  <div className="flex items-center justify-between text-xs sm:text-sm">
-                    <span className="font-medium text-slate-200">{skill.name}</span>
-                    <span className="font-mono text-cyan-400 font-semibold">{skill.level}%</span>
-                  </div>
-
-                  <div className="h-2 w-full bg-dark-950 rounded-full overflow-hidden p-0.5 border border-slate-800">
-                    <div
-                      className="h-full rounded-full bg-gradient-to-r from-primary-500 to-cyan-400 transition-all duration-700 ease-out"
-                      style={{ width: `${skill.level}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+            <div className="card-surface p-6 border-brand-border space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-brand-blue mb-3">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <h4 className="text-base font-bold text-brand-text">{t.about.val3Title}</h4>
+              <p className="text-xs sm:text-sm text-brand-muted leading-relaxed">
+                {t.about.val3Desc}
+              </p>
             </div>
-
           </div>
         </div>
 

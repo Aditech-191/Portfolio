@@ -16,7 +16,7 @@ export interface ServiceItem {
 export interface ProjectItem {
   id: string;
   title: string;
-  category: 'web' | 'systems' | 'data' | 'all';
+  category: 'web' | 'systems' | 'all';
   categoryLabel: string;
   description: string;
   longDescription: string;
@@ -24,9 +24,12 @@ export interface ProjectItem {
   githubUrl: string;
   liveDemoUrl?: string;
   featured?: boolean;
+  status: 'Completed' | 'In Progress' | 'Prototype';
+  problemAddressed: string;
+  myImplementation: string;
+  learnings: string;
   highlights: string[];
-  metrics: string;
-  imageGradient: string;
+  metrics?: string;
 }
 
 export interface ChatMessage {
